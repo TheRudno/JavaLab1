@@ -5,20 +5,32 @@ import java.util.List;
 import java.util.Locale;
 import java.util.Scanner;
 
+/**
+ * Class allows to create Polygon
+ */
 public class Polygon {
-
+    /**
+     * Area of polygon
+     */
     private float area;
-    private int verticesNr = 0;
+    /**
+     * All vertices of polygon are stored in this container
+     */
     private List<Point> vertices = new ArrayList<>();
-
+    /**
+     * Constructor for polygon
+     */
     public Polygon() {
         initializePolygon();
     }
-
+    /**
+     * Method responsible for interaction with user about certain polygon vertices
+     */
     private void initializePolygon(){
+        vertices.clear();
         System.out.println("Podaj liczbe wierzchołków");
         Scanner s = new Scanner(System.in).useLocale(Locale.US);
-        verticesNr = s.nextInt();
+        int verticesNr = s.nextInt();
         float x,y;
         for (int i = 0; i < verticesNr; i++) {
             System.out.println("Podaj współrzędna X wierzchołka:" + (i+1));
@@ -29,7 +41,9 @@ public class Polygon {
         }
         vertices.add(new Point(vertices.get(0).getX(),vertices.get(0).getY()));
     }
-
+    /**
+     * Algorithm that  calculates area of polygon, returns float
+     */
     public float calculateArea(){
         area = 0;
 
@@ -40,27 +54,16 @@ public class Polygon {
 
         return area;
     }
-
-
-    public void printVertices(){
-        for (Point p:vertices) {
-            System.out.println(p);
-        }
-    }
-
+    /**
+     * Returns area of polygon
+     */
     public float getArea() {
-        return area;
+            return area;
     }
-
-    public void setArea(float area) {
-        this.area = area;
-    }
-
-    public int getVerticesNr() {
-        return verticesNr;
-    }
-
-    public void setVerticesNr(int verticesNr) {
-        this.verticesNr = verticesNr;
+    /**
+     * Returns list of polygon vertices
+     */
+    public List<Point> getVertices() {
+        return vertices;
     }
 }
