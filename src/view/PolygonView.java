@@ -9,8 +9,8 @@ import java.util.ArrayList;
 public class PolygonView {
     public void printPolygonDetails(float area, ArrayList<Point> vertices){
         System.out.println("Area of polygon with vertices: ");
-        for (Point p:vertices) {
-            System.out.println(p);
+        for (int i = 0; i < vertices.size()-1; i++) {
+            System.out.println(vertices.get(i));
         }
         System.out.println("Is: " + area);
     }

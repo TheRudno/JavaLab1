@@ -39,12 +39,16 @@ public class Polygon {
             y = s.nextFloat();
             vertices.add(new Point(x,y));
         }
+        if(vertices.size()>0);
         vertices.add(new Point(vertices.get(0).getX(),vertices.get(0).getY()));
     }
     /**
      * Algorithm that  calculates area of polygon, returns float
      */
-    public float calculateArea(){
+    public void calculateArea(){
+
+        if(vertices.size() - 1 < 3)
+            throw new NotPolygonException("Polygon should have at least 3 vertices");
         area = 0;
 
         for (int i = 0; i < vertices.size()-1; i++) {
@@ -52,7 +56,6 @@ public class Polygon {
         }
         area = Math.abs(area / 2);
 
-        return area;
     }
     /**
      * Returns area of polygon
