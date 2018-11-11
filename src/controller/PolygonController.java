@@ -1,10 +1,14 @@
 package controller;
 
-import model.NotPolygonException;
+import model.Point;
 import model.Polygon;
 import view.PolygonView;
 
-import java.util.ArrayList;
+import java.util.List;
+
+/**
+ @author Michał Kamiński
+ */
 
 public class PolygonController {
     /**
@@ -17,10 +21,13 @@ public class PolygonController {
     private PolygonView view;
     /**
      * PolygonController constructor, takes two values: Polygon and PolygonView
+     * @param args console arguments array
      */
-    public PolygonController(Polygon polygon, PolygonView view) {
-        this.polygon = polygon;
-        this.view = view;
+    public PolygonController(String args[]) {
+        view = new PolygonView();
+        view.welcomeMsg(args);
+        polygon = new Polygon();
+        polygon.initializePolygon();
     }
     /**
      * Calculates area of polygon, handles custom exception if Polygon doesn't match requirements
@@ -28,21 +35,30 @@ public class PolygonController {
     public void calculatePolygonArea(){
         try {
             polygon.calculateArea();
-        }catch (Exception e){
-            System.out.println(e.toString());
+        }catch (Exception exception){
+            System.out.println(exception.toString());
         }
     }
     /**
      * Calls PolygonView method which prints basic inforamtion about Polygon
      */
     public void updateView(){
-        view.printPolygonDetails(polygon.getArea(),(ArrayList)polygon.getVertices());
+        view.printPolygonDetails(getPolygonArea(),polygon.getVertices());
     }
     /**
      * Returns Polygon area
+     * @return  area of polygon
      */
     public float getPolygonArea(){
         return polygon.getArea();
+    }
+
+    /**
+     * Returns Polygon verrtices
+     * @return list of polygon vertices
+     */
+    public List<Point> getVertices(){
+        return polygon.getVertices();
     }
 
 }

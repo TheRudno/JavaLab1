@@ -1,12 +1,10 @@
 package model;
 
-import java.util.ArrayList;
-import java.util.List;
-import java.util.Locale;
-import java.util.Scanner;
+import java.util.*;
 
 /**
  * Class allows to create Polygon
+ * @author Michał Kamiński
  */
 public class Polygon {
     /**
@@ -20,13 +18,11 @@ public class Polygon {
     /**
      * Constructor for polygon
      */
-    public Polygon() {
-        initializePolygon();
-    }
+    public Polygon(){}
     /**
      * Method responsible for interaction with user about certain polygon vertices
      */
-    private void initializePolygon(){
+    public void initializePolygon(){
         vertices.clear();
         System.out.println("Podaj liczbe wierzchołków");
         Scanner s = new Scanner(System.in).useLocale(Locale.US);
@@ -39,8 +35,8 @@ public class Polygon {
             y = s.nextFloat();
             vertices.add(new Point(x,y));
         }
-        if(vertices.size()>0);
-        vertices.add(new Point(vertices.get(0).getX(),vertices.get(0).getY()));
+        if(!vertices.isEmpty())
+            vertices.add(new Point(vertices.get(0).getX(),vertices.get(0).getY()));
     }
     /**
      * Algorithm that  calculates area of polygon, returns float
@@ -49,6 +45,7 @@ public class Polygon {
 
         if(vertices.size() - 1 < 3)
             throw new NotPolygonException("Polygon should have at least 3 vertices");
+
         area = 0;
 
         for (int i = 0; i < vertices.size()-1; i++) {
@@ -59,14 +56,23 @@ public class Polygon {
     }
     /**
      * Returns area of polygon
+     * @return area of specific polygon
      */
     public float getArea() {
             return area;
     }
     /**
      * Returns list of polygon vertices
+     * @return list of vertices
      */
     public List<Point> getVertices() {
-        return vertices;
+        return Collections.unmodifiableList(vertices);
+    }
+    /**
+     * Replace list of polygon vertices
+     * @param  vertices list of vertices
+     */
+    public void setVertices(List<Point> vertices) {
+        this.vertices = vertices;
     }
 }
