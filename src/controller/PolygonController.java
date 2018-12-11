@@ -27,7 +27,7 @@ public class PolygonController {
         view = new PolygonView();
         view.welcomeMsg(args);
         polygon = new Polygon();
-        polygon.initializePolygon();
+        view.initializePolygon(polygon);
     }
     /**
      * Calculates area of polygon, handles custom exception if Polygon doesn't match requirements

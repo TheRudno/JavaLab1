@@ -19,25 +19,7 @@ public class Polygon {
      * Constructor for polygon
      */
     public Polygon(){}
-    /**
-     * Method responsible for interaction with user about certain polygon vertices
-     */
-    public void initializePolygon(){
-        vertices.clear();
-        System.out.println("Podaj liczbe wierzchołków");
-        Scanner s = new Scanner(System.in).useLocale(Locale.US);
-        int verticesNr = s.nextInt();
-        float x,y;
-        for (int i = 0; i < verticesNr; i++) {
-            System.out.println("Podaj współrzędna X wierzchołka:" + (i+1));
-            x = s.nextFloat();
-            System.out.println("Podaj współrzędna Y wierzchołka:" + (i+1));
-            y = s.nextFloat();
-            vertices.add(new Point(x,y));
-        }
-        if(!vertices.isEmpty())
-            vertices.add(new Point(vertices.get(0).getX(),vertices.get(0).getY()));
-    }
+
     /**
      * Algorithm that  calculates area of polygon, returns float
      */

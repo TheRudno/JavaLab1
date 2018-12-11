@@ -17,8 +17,6 @@ import static org.junit.Assert.*;
 
 @TestMaker(creator = "Michał Kamiński", lastModified = "11-11-2018")
 
-//no Test for Polygon initializePolygon() method, it just allows user to enter data
-
 public class PolygonTest {
 
 
